@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Detail metodologi dan parameter analisis untuk penentuan lokasi potensial PLTS di D.I. Yogyakarta." />
+    <meta name="author" content="Tim Analis PLTS" />
+    <title>Detail Analisis - WebSIG PLTS</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link href="./css/bootstrap.min.css" rel="stylesheet" />
+    <link href="./css/fontawesome-all.min.css" rel="stylesheet" />
+    <link href="./css/aos.min.css" rel="stylesheet" />
+    <link href="./css/swiper.css" rel="stylesheet" />
+    <link href="./css/style.css" rel="stylesheet" />
+    <link rel="icon" href="./assets/images/favicon.png" />
+
+    <style>
+      .dashboard-modal {
+        display: none; /* Sembunyikan secara default */
+        position: fixed;
+        z-index: 2000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.6);
+      }
+      .dashboard-content {
+        background-color: #fefefe;
+        margin: 5% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        height: 80%;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+      }
+      .dashboard-content iframe {
+        flex-grow: 1;
+        border: none;
+      }
+      .close-button {
+        color: #aaa;
+        position: absolute;
+        top: 10px;
+        right: 25px;
+        font-size: 35px;
+        font-weight: bold;
+      }
+      .close-button:hover,
+      .close-button:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <nav id="navbar" class="navbar navbar-expand-lg fixed-top navbar-dark" aria-label="Main navigation">
+      <div class="container">
+        <a class="navbar-brand logo-text" href="index.html">WebSIG PLTS</a>
+        <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+          <ul class="navbar-nav ms-auto navbar-nav-scroll">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Beranda</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="index.html#about">Tentang</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="index.html#services">Analisis</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="index.html#plans">Potensi</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="peta.html">Peta</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="index.html#contact">Kontak</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <header class="ex-header">
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-10 offset-xl-1">
+            <h1 class="text-center">Detail Parameter Analisis</h1>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="ex-basic-1 pt-5 pb-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-10 offset-xl-1">
+            <div class="text-box mb-5">
+              <h3><i class="fas fa-sun me-2"></i>PETA RADIASI SURYA (GHI)</h3>
+              <p>
+                Radiasi Surya Global (Global Horizontal Irradiance - GHI) adalah parameter paling fundamental dalam penentuan potensi PLTS. Parameter ini mengukur total energi matahari yang diterima per satuan luas permukaan horizontal.
+                Semakin tinggi nilai GHI, semakin besar energi listrik yang dapat dihasilkan oleh panel surya. Dalam analisis ini, kami menggunakan data GHI tahunan rata-rata untuk mengidentifikasi area dengan paparan sinar matahari paling
+                optimal sepanjang tahun.
+              </p>
+              <p><strong>Kriteria:</strong> Area dengan nilai GHI tertinggi (di atas 5.0 kWh/m²/hari) diberi skor paling tinggi karena paling efisien untuk produksi energi.</p>
+              <button onclick="openDashboard('https://598f-202-43-94-2.ngrok-free.app/mapstore/#/dashboard/117')" class="btn btn-secondary mt-3">Lihat Dashboard GHI</button>
+            </div>
+
+            <div class="text-box mb-5">
+              <h3><i class="fas fa-mountain me-2"></i>ANALISIS TOPOGRAFI (SLOPE)</h3>
+              <p>
+                Topografi, khususnya kemiringan lereng (slope), sangat mempengaruhi biaya konstruksi, stabilitas instalasi, dan efektivitas panel surya. Area yang terlalu curam akan meningkatkan risiko erosi, mempersulit pembangunan, dan
+                membutuhkan struktur penopang yang lebih mahal. Sebaliknya, area yang relatif datar lebih disukai.
+              </p>
+              <p><strong>Kriteria:</strong> Lokasi ideal memiliki kemiringan di bawah 8%. Area dengan kemiringan yang lebih besar dianggap kurang sesuai dan mendapatkan skor lebih rendah.</p>
+              <button onclick="openDashboard('https://598f-202-43-94-2.ngrok-free.app/mapstore/#/dashboard/82')" class="btn btn-secondary mt-3">Lihat Dashboard Slope</button>
+            </div>
+
+            <div class="text-box mb-5">
+              <h3><i class="fas fa-home me-2"></i>JARAK DARI PEMUKIMAN</h3>
+              <p>
+                Analisis jarak dari pemukiman berfungsi sebagai kriteria eksklusi (zona larangan). Pembangunan PLTS skala besar tidak boleh terlalu dekat dengan area pemukiman untuk menghindari konflik tata ruang, dampak visual, dan potensi
+                gangguan lainnya. Kami membuat zona penyangga (buffer) di sekitar area pemukiman.
+              </p>
+              <p><strong>Kriteria:</strong> Area yang berada dalam radius 500 meter dari pemukiman akan dikecualikan dari lokasi potensial.</p>
+              <button onclick="openDashboard('https://598f-202-43-94-2.ngrok-free.app/mapstore/#/viewer/89')" class="btn btn-secondary mt-3">Lihat Dashboard Pemukiman</button>
+            </div>
+
+            <div class="text-box mb-5">
+              <h3><i class="fas fa-road me-2"></i>JARAK DARI JALAN</h3>
+              <p>
+                Aksesibilitas ke lokasi sangat penting untuk proses konstruksi dan pemeliharaan. Kedekatan dengan jaringan jalan utama (arteri dan kolektor) akan menekan biaya transportasi material dan mobilitas tenaga kerja. Namun, lokasi
+                juga tidak boleh berada tepat di tepi jalan. Oleh karena itu, analisis ini menggunakan buffer untuk menentukan zona larangan sekaligus zona ideal.
+              </p>
+              <p><strong>Kriteria:</strong> Lokasi yang berada dalam radius 500 meter dari jalan raya utama akan dikecualikan (zona larangan) untuk menjaga fungsi jalan.</p>
+              <button onclick="openDashboard('https://598f-202-43-94-2.ngrok-free.app/mapstore/#/viewer/100')" class="btn btn-secondary mt-3">Lihat Dashboard Jalan</button>
+            </div>
+
+            <div class="text-box mb-5">
+              <h3><i class="fas fa-water me-2"></i>JARAK DARI SUNGAI</h3>
+              <p>
+                Sungai dan badan air lainnya merupakan kawasan lindung yang harus dijaga kelestarian ekosistemnya. Pembangunan infrastruktur di sempadan sungai dapat mengganggu keseimbangan hidrologis dan ekologis. Untuk itu, kami
+                menerapkan zona penyangga sebagai area eksklusi di sekitar jaringan sungai besar.
+              </p>
+              <p><strong>Kriteria:</strong> Area yang berada dalam radius 300 meter dari sungai besar akan dikecualikan dari lokasi potensial untuk PLTS.</p>
+              <button onclick="openDashboard('https://598f-202-43-94-2.ngrok-free.app/mapstore/#/dashboard/71')" class="btn btn-secondary mt-3">Lihat Dashboard Sungai</button>
+            </div>
+
+            <a class="btn btn-tertiary" href="index.html">KEMBALI KE BERANDA</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="dashboardModal" class="dashboard-modal">
+      <div class="dashboard-content">
+        <span class="close-button" onclick="closeDashboard()">&times;</span>
+        <iframe id="dashboardFrame" src="" title="Dashboard Detail"></iframe>
+      </div>
+    </div>
+
+    <section class="footer text-light"></section>
+
+    <div class="bottom py-2 text-light"></div>
+
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/aos.js"></script>
+    <script src="./js/script.js"></script>
+
+    <script>
+      // Fungsi ini sekarang menerima URL sebagai parameter
+      function openDashboard(dashboardUrl) {
+        var modal = document.getElementById("dashboardModal");
+        var iframe = document.getElementById("dashboardFrame");
+
+        // Setel URL dari parameter ke iframe dan tampilkan modal
+        iframe.src = dashboardUrl;
+        modal.style.display = "block";
+      }
+
+      function closeDashboard() {
+        var modal = document.getElementById("dashboardModal");
+        var iframe = document.getElementById("dashboardFrame");
+        // Sembunyikan modal dan kosongkan src iframe untuk menghentikan loading
+        modal.style.display = "none";
+        iframe.src = "";
+      }
+
+      // Tutup modal jika user mengklik di luar konten
+      window.onclick = function (event) {
+        var modal = document.getElementById("dashboardModal");
+        if (event.target == modal) {
+          closeDashboard();
+        }
+      };
+    </script>
+  </body>
+</html>
