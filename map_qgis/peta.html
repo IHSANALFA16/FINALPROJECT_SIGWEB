@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+
+    <link rel="stylesheet" href="./resources/ol.css" />
+    <link rel="stylesheet" href="./resources/qgis2web.css" />
+    <link rel="stylesheet" href="resources/fontawesome-all.min.css" />
+    <link rel="stylesheet" type="text/css" href="resources/horsey.min.css" />
+    <link rel="stylesheet" type="text/css" href="resources/ol3-search-layer.min.css" />
+    <link href="resources/ol-geocoder.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./resources/ol-layerswitcher.css" />
+
+    <style>
+      /* Mengimpor font Poppins yang digunakan di header */
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap");
+
+      /* Reset dasar dan layout flexbox untuk body */
+      html,
+      body {
+        height: 100vh; /* Tinggi viewport penuh */
+        width: 100vw; /* Lebar viewport penuh */
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column; /* Mengatur layout vertikal: header di atas, peta di bawah */
+        font-family: "Poppins", sans-serif; /* Menggunakan font dari header */
+        background-color: #ffffff;
+        overflow: hidden; /* Mencegah scrollbar ganda */
+      }
+
+      /* Style untuk Header Navigasi */
+      .header-nav {
+        flex-shrink: 0; /* Mencegah header menyusut */
+        background-color: #212529; /* Warna latar belakang gelap seperti di gambar */
+        padding: 0.5rem 1rem;
+        color: #f8f9fa;
+        display: flex;
+        justify-content: space-between; /* Mendorong logo ke kiri dan menu ke kanan */
+        align-items: center;
+        width: 100%;
+        box-sizing: border-box;
+      }
+      .header-nav .logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #ffffff;
+        text-decoration: none;
+      }
+      .header-nav .nav-links {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+      }
+      .header-nav .nav-links li {
+        padding: 0 15px;
+      }
+      .header-nav .nav-links a {
+        color: #adb5bd;
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: color 0.2s;
+      }
+      .header-nav .nav-links a:hover,
+      .header-nav .nav-links a.active {
+        color: #ffffff; /* Warna link menjadi putih saat aktif/hover */
+      }
+
+      /* Penyesuaian untuk Peta */
+      #map {
+        width: 100%;
+        flex-grow: 1; /* Membuat peta mengisi sisa ruang vertikal */
+        height: auto !important; /* Override style asli qgis2web */
+      }
+    </style>
+    <title>Peta Interaktif - WebSIG PLTS</title>
+  </head>
+  <body>
+    <header class="header-nav">
+      <a href="../index.html" class="logo">WebSIG PLTS</a>
+      <ul class="nav-links">
+        <li><a href="../index.html">Beranda</a></li>
+        <li><a href="../index.html#about">Tentang</a></li>
+        <li><a href="../index.html#services">Analisis</a></li>
+        <li><a href="../index.html#plans">Potensi</a></li>
+        <li><a href="#" class="active">Peta</a></li>
+        <li><a href="../index.html#contact">Kontak</a></li>
+      </ul>
+    </header>
+    <div id="map">
+      <div id="popup" class="ol-popup">
+        <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+        <div id="popup-content"></div>
+      </div>
+    </div>
+
+    <script src="resources/qgis2web_expressions.js"></script>
+    <script src="./resources/functions.js"></script>
+    <script src="./resources/ol.js"></script>
+    <script src="resources/horsey.min.js"></script>
+    <script src="resources/ol3-search-layer.js"></script>
+    <script src="./resources/ol-layerswitcher.js"></script>
+    <script src="resources/ol-geocoder.js"></script>
+    <script src="layers/DESA_DIY_1.js"></script>
+    <script src="layers/SLOPE_DIY_3.js"></script>
+    <script src="layers/PEMUKIMANDIY_4.js"></script>
+    <script src="layers/JALAN_DIY_5.js"></script>
+    <script src="layers/SUNGAI_DIY_6.js"></script>
+    <script src="layers/LOKASIPOTENSIALPLTS_7.js"></script>
+    <script src="styles/DESA_DIY_1_style.js"></script>
+    <script src="styles/SLOPE_DIY_3_style.js"></script>
+    <script src="styles/PEMUKIMANDIY_4_style.js"></script>
+    <script src="styles/JALAN_DIY_5_style.js"></script>
+    <script src="styles/SUNGAI_DIY_6_style.js"></script>
+    <script src="styles/LOKASIPOTENSIALPLTS_7_style.js"></script>
+    <script src="./layers/layers.js" type="text/javascript"></script>
+    <script src="./resources/Autolinker.min.js"></script>
+    <script src="./resources/qgis2web.js"></script>
+  </body>
+</html>
